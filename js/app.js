@@ -9,21 +9,30 @@ var megaRoster = {
             this.setupEventListeners();
         },
         setupEventListeners: function(){
-            document.querySelector('form').onsubmit = this.addStudent
+            document.querySelector('form#studentForm').onsubmit = this.addStudent.bind(this)
+
+            this.addStudent.bind(this);
+            //bind forces js to bind "this " to the current object
+
         }, //this refers to the same object
 
         addStudent: function(ev){
             ev.preventDefault();
-
-            ev.currentTarget //this is the form
-            var studentName = this.studentName.value
-
-            var
+            var f = ev.currentTarget; //this is the form
+            var studentName = f.studentName.value;
             this.count += 1 ;
-            console.log
+            console.log(studentName);
+        },
+
+            buildListItem: function(studentName){
+                //build list item using a studentName
+                var listItem = document.createElement('li')
+                listItem.innerText = studentName;
             }
-        };
-        megaRoster.init()
+        },
+};
+
+megaRoster.init()
 
 
 //event was submit the object it occured on is before
