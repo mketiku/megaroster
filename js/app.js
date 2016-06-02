@@ -1,20 +1,17 @@
 $(document).foundation();
+//Object called megaRoster
+//Page Load
 
 var megaRoster = {
-    //Object called megaRoster
-    //Page Load
+
         init: function(){
             //init is a property but the right side is a functions
             //init runs first,
             this.setupEventListeners();
             this.count = 0 ;
-
-
         },
         setupEventListeners: function(){
-            document.querySelector('form#studentForm').onsubmit = this.addStudent.bind(this)
-
-            this.addStudent.bind(this);
+            document.querySelector('form#studentForm').onsubmit = this.addStudent.bind(this);
             //bind forces js to bind "this " to the current object
 
         }, //this refers to the same object
@@ -24,13 +21,14 @@ var megaRoster = {
             var f = ev.currentTarget; //this is the form
             var studentName = f.studentName.value;
             var listItem = this.buildListItem(studentName);
-            var studentList = document.querySelector('#studentList')
-
+            var studentList = document.querySelector('#studentList') //hashtag take items to the top of the page
             studentList.appendChild(listItem);
 
             f.reset();
 
             this.count += 1 ;
+            f.studentName.focus();
+            //when ran, this will return focus to the student
 
 
         },
@@ -40,12 +38,17 @@ var megaRoster = {
             var removeLink = this.buildLink({
                 text:'remove'
                 handler: function(){
-                    lisItem.remove
+                    lisItem.remove();
                 }
             });
 
 
-            var promoteLink = this.buildLink('promote,');
+            var promoteLink = this.buildLink({
+                text:'promote'
+                handler: function(){
+                    listItem.style.border = '2px CornflowerBlue dashed';
+                }
+            });
                 listItem.innerText= studentName;
                 listItem.appendChild(removeLink)
                 listItem.appendChild(promoteLink)
@@ -58,8 +61,8 @@ var megaRoster = {
             var link = document.createElement('a');
                 //function that build a link with the text that we pass on
             link.href = "#";
-            link.innerText = linkText;
-            link.onclick = handler;
+            link.innerText = options.linkText;
+            link.onclick = options.handler;
             return link
             },
         },
