@@ -1,6 +1,10 @@
-#studentForm > sdivs {
+#studentForm > div {
     padding: 0;
 
 }
 /*add padding to div fo*/
 /*space > means everthing underneathh it*/
+
+#studentList {
+    margin-left: lem;
+}

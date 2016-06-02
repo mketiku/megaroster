@@ -2,11 +2,14 @@ $(document).foundation();
 
 var megaRoster = {
     //Object called megaRoster
-
     //Page Load
         init: function(){
             //init is a property but the right side is a functions
+            //init runs first,
             this.setupEventListeners();
+            this.count = 0 ;
+
+
         },
         setupEventListeners: function(){
             document.querySelector('form#studentForm').onsubmit = this.addStudent.bind(this)
@@ -20,15 +23,36 @@ var megaRoster = {
             ev.preventDefault();
             var f = ev.currentTarget; //this is the form
             var studentName = f.studentName.value;
-            this.count += 1 ;
-            console.log(studentName);
-        },
+            var listItem = this.buildListItem(studentName);
+            var studentList = document.querySelector('#studentList')
 
-            buildListItem: function(studentName){
-                //build list item using a studentName
-                var listItem = document.createElement('li')
-                listItem.innerText = studentName;
-            }
+            studentList.appendChild(listItem);
+
+            f.reset();
+
+            this.count += 1 ;
+
+
+        },
+        buildListItem: function(studentName){
+            //build list item using a studentName
+            var listItem = document.createElement('li');
+            var removeLink = this.buildLink('remove',);
+            var promoteLink = this.buildLink('promote,');
+            this.buildLink.
+
+
+            listItem.innerText = studentName;
+            return listItem;
+
+        buildLink: function(linkText, handler){
+            var link = document.createElement('a');
+                //function that build a link with the text that we pass on
+            link.href = "#";
+            link.innerText = linkText;
+            link.onclick = handler;
+            return link
+            },
         },
 };
 
