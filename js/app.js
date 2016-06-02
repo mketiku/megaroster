@@ -37,9 +37,18 @@ var megaRoster = {
         buildListItem: function(studentName){
             //build list item using a studentName
             var listItem = document.createElement('li');
-            var removeLink = this.buildLink('remove',);
+            var removeLink = this.buildLink({
+                text:'remove'
+                handler: function(){
+                    lisItem.remove
+                }
+            });
+
+
             var promoteLink = this.buildLink('promote,');
-            this.buildLink.
+                listItem.innerText= studentName;
+                listItem.appendChild(removeLink)
+                listItem.appendChild(promoteLink)
 
 
             listItem.innerText = studentName;
