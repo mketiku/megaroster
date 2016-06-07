@@ -42,7 +42,7 @@ var megaRoster = {
                 }
             });
 
-
+//top and bottom button are the 
             var promoteLink = this.buildLink({
                 text:'promote'
                 handler: function(){
@@ -50,9 +50,11 @@ var megaRoster = {
                 }
             });
                 listItem.innerText= studentName;
-                listItem.appendChild(removeLink)
-                listItem.appendChild(promoteLink)
+                listItem.appendChild(removeLink);
+                //list items bottom
 
+                //list items top
+                listItem.appendChild(promoteLink);
 
             listItem.innerText = studentName;
             return listItem;
